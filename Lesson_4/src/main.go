@@ -6,25 +6,11 @@ import (
 	"log"
 )
 
-func main() {
-	var test = []struct{
-		data string
-		idx int	
-	}{
-		{data: "bla", idx: 1},
-		{data: "blo", idx: 6},
-		{data: "blu", idx: 3},
-		{data: "bli", idx: 8},
-		{data: "bly", idx: 0},
-	}	
-	
-	var data []interface{}
-	for _,v := range test {
-		data = append(data, v)
-	}
+func main() {	
+	data := []interface{}{1,2,3,4,8,3}
 
 	maxElement, err := GetMaxItem(data, func(currentItemIndex, maxItemIndex int) bool {
-		return test[currentItemIndex].idx > test[maxItemIndex].idx
+		return data[currentItemIndex].(int) > data[maxItemIndex].(int)
 	})
 	
 	if err != nil {
