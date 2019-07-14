@@ -21,6 +21,9 @@ func CopyFileToFile(from string, to string, buff int) error {
 		return err
 	}
 	buffer, err := getBuffer(buff)
+	if err =! nil {
+		return err
+	}
 	localBuffer := make([]byte, buffer)
 	io.CopyBuffer(writer, reader, localBuffer)
 
