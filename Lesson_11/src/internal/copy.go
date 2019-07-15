@@ -11,7 +11,6 @@ import (
 // to 	- куда попировать
 // buff - размер буфера
 func CopyFileToFile(from string, to string, buff int) error {
-	fmt.Printf("%s %s %d", from, to, buff)
 	reader, err := getReader(from)
 	if err != nil {
 		return err
@@ -21,7 +20,7 @@ func CopyFileToFile(from string, to string, buff int) error {
 		return err
 	}
 	buffer, err := getBuffer(buff)
-	if err =! nil {
+	if err != nil {
 		return err
 	}
 	localBuffer := make([]byte, buffer)
@@ -53,7 +52,7 @@ func getBuffer(buff int) (int, error) {
 	buffer := buff * 1024
 	if buffer < 1024 {
 		err = fmt.Errorf("Размер буфера не может быть меньше 1024 байт")
-	} else if buffer > 1024*8 {
+	} else if buffer > 1024*1024*8 {
 		err = fmt.Errorf("Размер буфера не может быть больше 8 Мб")
 	}
 	return buffer, err
